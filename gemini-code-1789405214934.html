@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creator Universe | Astronomical Brand Portfolio</title>
+    <!-- Google Fonts Import for Outfit & Marcellus (Astronomical Fallbacks for Lovetto, Just Wright, Sona) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Marcellus&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==================== COSMIC CSS VARIABLES ==================== */
+        :root {
+            --bg-space-dark: #070a14;
+            --bg-space-card: rgba(15, 23, 42, 0.75);
+            --bg-space-card-hover: rgba(30, 41, 59, 0.85);
+            --border-starlight: rgba(129, 140, 248, 0.25);
+            --border-starlight-glow: rgba(253, 224, 71, 0.5);
+            
+            --accent-gold: #fde047;
+            --accent-moon: #e2e8f0;
+            --accent-nebula: #818cf8;
+            --accent-planet: #38bdf8;
+            
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-gold: #fef08a;
+
+            /* Custom Whimsical & Astronomical Fonts Stack */
+            --font-title: 'Lovetto', 'Just Wright', 'Marcellus', 'Outfit', serif;
+            --font-whimsical: 'Sona', 'Caveat', cursive;
+            --font-body: 'Outfit', sans-serif;
+
+            --card-radius: 20px;
+            --transition-cosmic: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* ==================== BASE & COSMIC BACKGROUND ==================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-body);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-space-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Astronomical Background Nebulas & Stars */
+        .nebula {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -2;
+            opacity: 0.35;
+            pointer-events: none;
+        }
+
+        .nebula-1 { top: -10%; left: -10%; width: 55vw; height: 55vw; background: radial-gradient(circle, #312e81, #070a14); }
+        .nebula-2 { top: 40%; right: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, #1e1b4b, #0369a1); }
+        .nebula-3 { bottom: -10%; left: 20%; width: 60vw; height: 60vw; background: radial-gradient(circle, #4c1d95, #070a14); }
+
+        /* Starfield Animation Canvas */
+        #starfield {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Floating Celestial Elements */
+        .celestial-float {
+            position: absolute;
+            pointer-events: none;
+            user-select: none;
+            color: var(--accent-gold);
+            opacity: 0.6;
+            animation: floatCelestial 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatCelestial {
+            0% { transform: translateY(0px) rotate(0deg) scale(1); }
+            50% { transform: translateY(-15px) rotate(10deg) scale(1.08); }
+            100% { transform: translateY(5px) rotate(-5deg) scale(0.95); }
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: var(--font-title);
+            color: var(--text-light);
+            letter-spacing: 0.02em;
+        }
+
+        h1 { font-size: clamp(2.5rem, 5vw, 4.2rem); line-height: 1.15; }
+        h2 { font-size: clamp(1.9rem, 3.4vw, 2.8rem); margin-bottom: 0.8rem; text-align: center; }
+        h3 { font-size: 1.35rem; }
+        p { color: var(--text-muted); font-size: 1.02rem; }
+
+        .whimsical-text {
+            font-family: var(--font-whimsical);
+            color: var(--text-gold);
+            font-size: 1.4rem;
+        }
+
+        /* Section Wrappers */
+        section {
+            padding: 95px 24px;
+            max-width: 1150px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 620px;
+            margin: -0.2rem auto 3rem auto;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition-cosmic);
+            text-decoration: none;
+            border: none;
+            outline: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-gold), #eab308);
+            color: #0f172a;
+            box-shadow: 0 0 20px rgba(253, 224, 71, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(253, 224, 71, 0.45);
+        }
+
+        .btn-secondary {
+            background: var(--bg-space-card);
+            color: var(--text-light);
+            border: 1px solid var(--border-starlight);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-nebula);
+            background: var(--bg-space-card-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(129, 140, 248, 0.3);
+        }
+
+        /* ==================== NAVIGATION ==================== */
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 48px);
+            max-width: 1000px;
+            background: rgba(11, 17, 32, 0.8);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-starlight);
+            border-radius: 50px;
+            padding: 14px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-logo {
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-gold);
+        }
+
+        .nav-links { display: flex; gap: 24px; list-style: none; }
+        .nav-links a {
+            font-size: 0.92rem;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition-cosmic);
+        }
+
+        .nav-links a:hover { color: var(--accent-gold); text-shadow: 0 0 8px rgba(253, 224, 71, 0.6); }
+        .menu-toggle { display: none; font-size: 1.4rem; cursor: pointer; color: var(--accent-gold); }
+
+        /* ==================== HERO SECTION ==================== */
+        .hero {
+            min-height: 88vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            padding-top: 140px;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 18px;
+            background: rgba(129, 140, 248, 0.15);
+            border: 1px solid var(--border-starlight);
+            border-radius: 30px;
+            font-size: 0.88rem;
+            color: var(--accent-gold);
+            width: fit-content;
+        }
+
+        .hero-avatar-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-avatar {
+            width: 310px;
+            height: 410px;
+            object-fit: cover;
+            border-radius: var(--card-radius);
+            border: 2px solid var(--border-starlight);
+            box-shadow: 0 0 35px rgba(129, 140, 248, 0.25);
+            transform: rotate(-2deg);
+            transition: var(--transition-cosmic);
+        }
+
+        .hero-avatar:hover {
+            transform: rotate(0deg) scale(1.02);
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 45px rgba(253, 224, 71, 0.35);
+        }
+
+        .hero-socials { display: flex; gap: 14px; margin-top: 10px; }
+        .social-icon {
+            width: 44px; height: 44px; border-radius: 50%;
+            background: var(--bg-space-card);
+            border: 1px solid var(--border-starlight);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-light); text-decoration: none;
+            transition: var(--transition-cosmic); font-size: 1.15rem;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-4px);
+            background: var(--accent-nebula);
+            color: #070a14;
+            box-shadow: 0 0 20px var(--accent-nebula);
+        }
+
+        .currently-card {
+            background: var(--bg-space-card);
+            backdrop-filter: blur(12px);
+            border-radius: var(--card-radius);
+            padding: 20px 24px;
+            border: 1px solid var(--border-starlight);
+            margin-top: 20px;
+            display: flex; flex-direction: column; gap: 8px;
+            font-size: 0.9rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        /* ==================== ABOUT & PHILOSOPHY ==================== */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .cosmic-card {
+            background: var(--bg-space-card);
+            backdrop-filter: blur(12px);
+            padding: 36px;
+            border-radius: var(--card-radius);
+            border: 1px solid var(--border-starlight);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            position: relative;
+        }
+
+        .quote-box {
+            background: rgba(129, 140, 248, 0.1);
+            border-left: 4px solid var(--accent-gold);
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+            font-family: var(--font-whimsical);
+            font-size: 1.5rem;
+            color: var(--text-gold);
+        }
+
+        .philosophy-banner {
+            background: linear-gradient(135deg, rgba(30, 27, 75, 0.8), rgba(15, 23, 42, 0.9));
+            border: 1px solid var(--border-starlight);
+            border-radius: var(--card-radius);
+            padding: 50px 30px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 0 30px rgba(129, 140, 248, 0.15);
+        }
+
+        .philosophy-badge {
+            font-family: var(--font-title);
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: var(--accent-gold);
+            text-shadow: 0 0 15px rgba(253, 224, 71, 0.4);
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        /* ==================== CONTENT CATEGORIES ==================== */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
+        .category-card {
+            background: var(--bg-space-card);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: var(--card-radius);
+            border: 1px solid var(--border-starlight);
+            transition: var(--transition-cosmic);
+            display: flex; flex-direction: column; gap: 12px;
+        }
+
+        .category-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 12px 35px rgba(253, 224, 71, 0.15);
+        }
+
+        .category-icon {
+            font-size: 2rem; width: 52px; height: 52px;
+            background: rgba(129, 140, 248, 0.15);
+            border-radius: 14px; display: flex; align-items: center; justify-content: center;
+        }
+
+        /* ==================== SOCIAL MEDIA HUB ==================== */
+        .social-card {
+            background: var(--bg-space-card);
+            padding: 28px;
+            border-radius: var(--card-radius);
+            border: 1px solid var(--border-starlight);
+            text-align: center;
+            transition: var(--transition-cosmic);
+        }
+
+        .social-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-nebula);
+            box-shadow: 0 0 25px rgba(129, 140, 248, 0.25);
+        }
+
+        /* ==================== FEATURED VIDEOS ==================== */
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 26px; }
+        .video-card {
+            background: var(--bg-space-card);
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            border: 1px solid var(--border-starlight);
+            transition: var(--transition-cosmic);
+        }
+
+        .video-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.6);
+        }
+
+        .video-thumbnail { position: relative; width: 100%; height: 210px; overflow: hidden; background: #0f172a; }
+        .video-thumbnail img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition-cosmic); }
+        .video-card:hover .video-thumbnail img { transform: scale(1.06); }
+        .video-details { padding: 20px; }
+        .video-platform { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 6px; }
+
+        /* ==================== MASONRY SHOWCASE GALLERY ==================== */
+        .masonry-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); grid-auto-rows: 190px; gap: 18px; }
+        .gallery-item {
+            position: relative; border-radius: var(--card-radius); overflow: hidden;
+            border: 1px solid var(--border-starlight); cursor: pointer; transition: var(--transition-cosmic);
+        }
+
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition-cosmic); }
+        .gallery-item:hover img { transform: scale(1.08); }
+        .gallery-item:hover { border-color: var(--accent-gold); box-shadow: 0 0 25px rgba(253, 224, 71, 0.3); }
+        .gallery-item.tall { grid-row: span 2; }
+        .gallery-item.wide { grid-column: span 2; }
+
+        /* ==================== POLAROID SCRAPBOOK ==================== */
+        .scrapbook-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 26px; padding: 20px 0; }
+        .polaroid-card {
+            background: #0f172a;
+            padding: 16px 16px 26px 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            border-radius: 8px;
+            border: 1px solid var(--border-starlight);
+            transition: var(--transition-cosmic);
+            text-align: center;
+        }
+
+        .polaroid-card img { width: 100%; height: 190px; object-fit: cover; border-radius: 4px; }
+        .polaroid-caption { font-family: var(--font-whimsical); font-size: 1.25rem; margin-top: 12px; color: var(--text-gold); }
+        .polaroid-card:nth-child(even) { transform: rotate(-2.5deg); }
+        .polaroid-card:nth-child(odd) { transform: rotate(2deg); }
+        .polaroid-card:hover { transform: rotate(0deg) scale(1.05); border-color: var(--accent-gold); z-index: 5; }
+
+        /* ==================== SKILLS & SERVICES ==================== */
+        .skills-container { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+        .skill-tag {
+            background: var(--bg-space-card);
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-weight: 500;
+            border: 1px solid var(--border-starlight);
+            transition: var(--transition-cosmic);
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        .skill-tag:hover {
+            background: var(--accent-nebula);
+            color: #070a14;
+            border-color: var(--accent-nebula);
+            transform: scale(1.06);
+            box-shadow: 0 0 20px var(--accent-nebula);
+        }
+
+        /* ==================== EXPERIENCE TIMELINE ==================== */
+        .timeline { position: relative; max-width: 780px; margin: 0 auto; }
+        .timeline::after {
+            content: ''; position: absolute; width: 2px; background: var(--border-starlight);
+            top: 0; bottom: 0; left: 50%; margin-left: -1px;
+        }
+
+        .timeline-item { padding: 10px 40px; position: relative; width: 50%; }
+        .timeline-item::after {
+            content: '✦'; position: absolute; width: 26px; height: 26px; right: -13px;
+            background: var(--bg-space-dark); border: 2px solid var(--accent-gold); top: 18px;
+            border-radius: 50%; z-index: 1; display: flex; align-items: center; justify-content: center;
+            font-size: 0.75rem; color: var(--accent-gold); box-shadow: 0 0 10px var(--accent-gold);
+        }
+
+        .left { left: 0; }
+        .right { left: 50%; }
+        .right::after { left: -13px; }
+        .timeline-content {
+            padding: 22px; background: var(--bg-space-card);
+            border-radius: var(--card-radius); border: 1px solid var(--border-starlight);
+        }
+
+        /* ==================== MEDIA KIT SNAPSHOT ==================== */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; text-align: center; }
+        .stat-card {
+            background: var(--bg-space-card);
+            padding: 26px;
+            border-radius: var(--card-radius);
+            border: 1px solid var(--border-starlight);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-nebula));
+        }
+
+        .stat-value { font-family: var(--font-title); font-size: 2rem; font-weight: 800; color: var(--accent-gold); }
+        .stat-label { font-size: 0.9rem; color: var(--text-muted); margin-top: 4px; }
+
+        /* ==================== CONTACT & FOOTER ==================== */
+        .contact-card {
+            background: linear-gradient(135deg, rgba(30, 27, 75, 0.9), rgba(15, 23, 42, 0.95));
+            padding: 60px 30px;
+            border-radius: var(--card-radius);
+            text-align: center;
+            border: 1px solid var(--border-starlight);
+            box-shadow: 0 0 40px rgba(129, 140, 248, 0.2);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid var(--border-starlight);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(7, 10, 20, 0.9); display: none;
+            justify-content: center; align-items: center; z-index: 2000;
+            backdrop-filter: blur(12px);
+        }
+
+        .lightbox img { max-width: 88%; max-height: 82%; border-radius: var(--card-radius); border: 1px solid var(--accent-gold); box-shadow: 0 0 50px rgba(253, 224, 71, 0.3); }
+
+        /* ==================== RESPONSIVE DESIGN ==================== */
+        @media (max-width: 768px) {
+            .hero, .about-grid { grid-template-columns: 1fr; }
+            .hero-avatar-container { order: -1; }
+            .nav-links {
+                display: none; position: absolute; top: 60px; right: 0;
+                background: var(--bg-space-dark); width: 220px; flex-direction: column;
+                padding: 20px; border-radius: var(--card-radius); border: 1px solid var(--border-starlight);
+            }
+
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: block; }
+            .timeline::after { left: 25px; }
+            .timeline-item { width: 100%; padding-left: 60px; padding-right: 15px; }
+            .timeline-item::after { left: 12px; }
+            .right { left: 0%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Astronomical Nebulas -->
+    <div class="nebula nebula-1"></div>
+    <div class="nebula nebula-2"></div>
+    <div class="nebula nebula-3"></div>
+
+    <!-- Starfield Background Canvas -->
+    <canvas id="starfield"></canvas>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-logo">
+            <span>✦</span> <span id="nav-name">CREATOR UNIVERSE</span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about">About</a></li>
+            <li><a href="#content">Content</a></li>
+            <li><a href="#videos">Videos</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle">🪐</div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-tag">
+                <span>☼</span> Study & Lifestyle Creator
+            </div>
+            <h1 id="hero-title" style="margin-top: 12px;">Documenting my real digital universe. 🪐</h1>
+            <p id="hero-bio" style="margin-top: 14px;">Study Influencer, Content Creator & Storyteller documenting realistic student life, university admission journeys, and authentic everyday experiences.</p>
+
+            <div class="hero-socials">
+                <a href="#" class="social-icon" id="link-instagram" target="_blank" title="Instagram">📷</a>
+                <a href="#" class="social-icon" id="link-youtube" target="_blank" title="YouTube">🎬</a>
+                <a href="#" class="social-icon" id="link-facebook" target="_blank" title="Facebook">📘</a>
+                <a href="#" class="social-icon" id="link-tiktok" target="_blank" title="TikTok">🎵</a>
+            </div>
+
+            <div style="display: flex; gap: 14px; margin-top: 22px;">
+                <a href="#contact" class="btn btn-primary">Let's Collaborate ✦</a>
+                <a href="#work" class="btn btn-secondary">Explore Portfolio ☾</a>
+            </div>
+
+            <!-- "Currently" Interactive Cosmic Card -->
+            <div class="currently-card">
+                <div>✨ <strong>Currently Studying:</strong> <span id="curr-study">University Admission Prep</span></div>
+                <div>📖 <strong>Currently Reading:</strong> <span id="curr-read">Atomic Habits</span></div>
+                <div>🎬 <strong>Currently Creating:</strong> <span id="curr-create">Realistic Study Vlog Series</span></div>
+            </div>
+        </div>
+
+        <div class="hero-avatar-container">
+            <span class="celestial-float" style="top: -20px; right: 20px; font-size: 2rem;">☾</span>
+            <span class="celestial-float" style="bottom: 10px; left: 10px; font-size: 1.6rem;">🪐</span>
+            <img src="https://via.placeholder.com/350x450" alt="Creator Profile" class="hero-avatar" id="hero-img">
+        </div>
+    </section>
+
+    <!-- ABOUT ME SECTION -->
+    <section id="about">
+        <h2>About Me ☾</h2>
+        <p class="section-subtitle">A glimpse into my universe as a student, creator, and storyteller.</p>
+
+        <div class="about-grid">
+            <div class="cosmic-card">
+                <h3>Greetings, fellow explorer! ✨</h3>
+                <p style="margin-top: 10px;">I am a student and content creator documenting my raw, unfiltered journey through academics, university admission preparation, everyday student struggles, and personal growth.</p>
+                
+                <div class="quote-box">
+                    "I don't create a perfect version of student life. I document the real one."
+                </div>
+
+                <p>My goal is to share realistic routines, practical study insights, and honest stories that make fellow students feel less alone in their orbit.</p>
+            </div>
+
+            <div>
+                <h3 style="margin-bottom: 16px;">Things I Love ☁️</h3>
+                <div class="skills-container" style="justify-content: flex-start;">
+                    <span class="skill-tag">✍ Writing</span>
+                    <span class="skill-tag">📖 Reading</span>
+                    <span class="skill-tag">🎬 Storytelling</span>
+                    <span class="skill-tag">🎨 Creative Direction</span>
+                    <span class="skill-tag">🎞 Video Editing</span>
+                    <span class="skill-tag">📚 Continuous Learning</span>
+                    <span class="skill-tag">☁️ Documenting Everyday Life</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENT PHILOSOPHY -->
+    <section id="philosophy">
+        <div class="philosophy-banner">
+            <div class="philosophy-badge">REAL > PERFECT ✦</div>
+            <p style="max-width: 680px; margin: 0 auto; font-size: 1.1rem; color: var(--text-light);">
+                I prefer documenting real experiences, imperfect routines, study struggles, small wins, and everyday moments instead of creating an unrealistic, artificially polished picture of student life.
+            </p>
+        </div>
+    </section>
+
+    <!-- CONTENT CATEGORIES -->
+    <section id="content">
+        <h2>Content Pillars ☼</h2>
+        <p class="section-subtitle">Key themes explored across my cosmic content channels.</p>
+
+        <div class="cards-grid">
+            <div class="category-card">
+                <div class="category-icon">📚</div>
+                <h3>Study Content</h3>
+                <p>Study routines, admission preparation, question-bank practice, productivity techniques, and realistic study sessions.</p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">🎒</div>
+                <h3>Student Life</h3>
+                <p>Day-in-my-life, admission struggles, routines, relatable student struggles, and honest academic experiences.</p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">☁️</div>
+                <h3>Lifestyle</h3>
+                <p>Personal moments, lifestyle snippets, desk setups, aesthetic updates, and life reflections.</p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">📖</div>
+                <h3>Storytelling</h3>
+                <p>Personal experiences, observations, narrative-style content, and thoughts on personal growth.</p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">🎨</div>
+                <h3>Creative Content</h3>
+                <p>Editing visual concepts, concept development, experimental social media ideas, and aesthetic storytelling.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL MEDIA PLATFORMS HUB -->
+    <section id="socials">
+        <h2>My Little Corners of the Universe ✦</h2>
+        <p class="section-subtitle">Where you can find my content and community daily.</p>
+
+        <div class="cards-grid">
+            <div class="social-card">
+                <div style="font-size: 2.2rem; margin-bottom: 8px;">📷</div>
+                <h3>Instagram</h3>
+                <p id="ig-handle-txt" class="whimsical-text">@INSTAGRAM_HANDLE</p>
+                <a href="INSTAGRAM_URL" id="ig-link-btn" target="_blank" class="btn btn-secondary" style="margin-top:14px; padding:8px 20px; font-size:0.85rem;">Visit Orbit</a>
+            </div>
+
+            <div class="social-card">
+                <div style="font-size: 2.2rem; margin-bottom: 8px;">🎬</div>
+                <h3>YouTube</h3>
+                <p id="yt-handle-txt" class="whimsical-text">YOUTUBE_HANDLE</p>
+                <a href="YOUTUBE_URL" id="yt-link-btn" target="_blank" class="btn btn-secondary" style="margin-top:14px; padding:8px 20px; font-size:0.85rem;">Subscribe</a>
+            </div>
+
+            <div class="social-card">
+                <div style="font-size: 2.2rem; margin-bottom: 8px;">📘</div>
+                <h3>Facebook</h3>
+                <p id="fb-handle-txt" class="whimsical-text">FACEBOOK_HANDLE</p>
+                <a href="FACEBOOK_URL" id="fb-link-btn" target="_blank" class="btn btn-secondary" style="margin-top:14px; padding:8px 20px; font-size:0.85rem;">Follow Page</a>
+            </div>
+
+            <div class="social-card">
+                <div style="font-size: 2.2rem; margin-bottom: 8px;">🎵</div>
+                <h3>TikTok</h3>
+                <p id="tt-handle-txt" class="whimsical-text">TIKTOK_HANDLE</p>
+                <a href="TIKTOK_URL" id="tt-link-btn" target="_blank" class="btn btn-secondary" style="margin-top:14px; padding:8px 20px; font-size:0.85rem;">Watch TikToks</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED VIDEOS SHOWCASE -->
+    <section id="videos">
+        <h2>Featured Content 🎬</h2>
+        <p class="section-subtitle">Top-performing short videos, reels, and storytelling highlights.</p>
+
+        <div class="video-grid" id="featured-videos">
+            <!-- Video 1 -->
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <img src="https://via.placeholder.com/400x250" alt="Video Thumbnail">
+                </div>
+                <div class="video-details">
+                    <div class="video-platform">Instagram Reel</div>
+                    <h4>Realistic Admission Prep Day in My Life</h4>
+                    <p style="font-size: 0.85rem; margin-top: 5px;">10 hours of real study life without filters.</p>
+                    <a href="INSTAGRAM_URL" target="_blank" style="display:inline-block; margin-top:12px; font-weight:600; font-size:0.85rem; color:var(--accent-gold); text-decoration:none;">Watch Video ✦</a>
+                </div>
+            </div>
+
+            <!-- Video 2 -->
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <img src="https://via.placeholder.com/400x250" alt="Video Thumbnail">
+                </div>
+                <div class="video-details">
+                    <div class="video-platform">YouTube Shorts</div>
+                    <h4>Solving Question Banks Efficiently</h4>
+                    <p style="font-size: 0.85rem; margin-top: 5px;">My exact workflow during intense prep sessions.</p>
+                    <a href="YOUTUBE_URL" target="_blank" style="display:inline-block; margin-top:12px; font-weight:600; font-size:0.85rem; color:var(--accent-gold); text-decoration:none;">Watch Video ✦</a>
+                </div>
+            </div>
+
+            <!-- Video 3 -->
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <img src="https://via.placeholder.com/400x250" alt="Video Thumbnail">
+                </div>
+                <div class="video-details">
+                    <div class="video-platform">TikTok</div>
+                    <h4>Student Burnout & Reset Routine</h4>
+                    <p style="font-size: 0.85rem; margin-top: 5px;">A honest storytelling post about mental recovery.</p>
+                    <a href="TIKTOK_URL" target="_blank" style="display:inline-block; margin-top:12px; font-weight:600; font-size:0.85rem; color:var(--accent-gold); text-decoration:none;">Watch Video ✦</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CREATIVE WORK GALLERY / THUMBNAILS -->
+    <section id="work">
+        <h2>Creative Showcase ✦</h2>
+        <p class="section-subtitle">Post designs, thumbnails, visual editing, and campaign concepts.</p>
+
+        <div class="masonry-grid" id="work-gallery">
+            <div class="gallery-item tall"><img src="https://via.placeholder.com/300x500" alt="Work Sample" onclick="openLightbox(this.src)"></div>
+            <div class="gallery-item"><img src="https://via.placeholder.com/400x300" alt="Work Sample" onclick="openLightbox(this.src)"></div>
+            <div class="gallery-item wide"><img src="https://via.placeholder.com/500x300" alt="Work Sample" onclick="openLightbox(this.src)"></div>
+            <div class="gallery-item"><img src="https://via.placeholder.com/300x300" alt="Work Sample" onclick="openLightbox(this.src)"></div>
+            <div class="gallery-item tall"><img src="https://via.placeholder.com/300x500" alt="Work Sample" onclick="openLightbox(this.src)"></div>
+        </div>
+    </section>
+
+    <!-- WHY WORK WITH ME -->
+    <section id="why-me">
+        <h2>Why Collaborate With Me? 🤝</h2>
+        <p class="section-subtitle">Bringing human connection, storytelling, and strategic execution.</p>
+
+        <div class="cards-grid">
+            <div class="category-card">
+                <h3>Authentic Content</h3>
+                <p>I focus on realistic and relatable content instead of making everything look artificially perfect. Audiences trust my honest recommendations.</p>
+            </div>
+
+            <div class="category-card">
+                <h3>Engaged Student Audience</h3>
+                <p>My content naturally connects with students, admission candidates, and youth who value genuine productivity and lifestyle tools.</p>
+            </div>
+
+            <div class="category-card">
+                <h3>Storytelling Approach</h3>
+                <p>I enjoy turning ordinary experiences and brand messages into captivating narratives that people naturally connect with.</p>
+            </div>
+
+            <div class="category-card">
+                <h3>Consistency & Adaptability</h3>
+                <p>I adapt campaign briefs according to a brand's objectives while keeping my personal voice authentic and organic.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CREATIVE TOOLBOX / SKILLS -->
+    <section id="toolbox">
+        <h2>Creative Toolbox 🛠️</h2>
+        <p class="section-subtitle">Skills, tools, and technical capabilities I bring to projects.</p>
+
+        <div class="skills-container">
+            <span class="skill-tag">Video Editing</span>
+            <span class="skill-tag">Content Creation</span>
+            <span class="skill-tag">Social Media Content</span>
+            <span class="skill-tag">Storytelling</span>
+            <span class="skill-tag">Creative Writing</span>
+            <span class="skill-tag">Visual Editing</span>
+            <span class="skill-tag">Content Planning</span>
+            <span class="skill-tag">Communication</span>
+            <span class="skill-tag">Community Management</span>
+            <span class="skill-tag">Social Media Management</span>
+            <span class="skill-tag">Creative Concept Development</span>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE TIMELINE -->
+    <section id="experience">
+        <h2>Experience & Orbit 📜</h2>
+        <p class="section-subtitle">My journey in social media management, marketing, and community moderation.</p>
+
+        <div class="timeline">
+            <!-- Lobdhi -->
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <span style="font-size:0.78rem; font-weight:700; color:var(--accent-gold);">CURRENT ROLE</span>
+                    <h3>Social Media Executive</h3>
+                    <p><strong>Lobdhi</strong></p>
+                    <p style="font-size:0.88rem; margin-top:6px;">Handling social channels, media strategy, visual concepts, and brand consistency.</p>
+                </div>
+            </div>
+
+            <!-- Apar's Classroom -->
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <span style="font-size:0.78rem; font-weight:700; color:var(--accent-gold);">COMMUNITY</span>
+                    <h3>Moderator</h3>
+                    <p><strong>Apar's Classroom</strong></p>
+                    <p style="font-size:0.88rem; margin-top:6px;">Community interaction, managing student inquiries, and event moderation.</p>
+                </div>
+            </div>
+
+            <!-- Reach Savvy -->
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <span style="font-size:0.78rem; font-weight:700; color:var(--accent-gold);">MARKETING</span>
+                    <h3>Junior Marketing Executive</h3>
+                    <p><strong>Reach Savvy</strong></p>
+                    <p style="font-size:0.88rem; margin-top:6px;">Assisted in marketing execution, outreach campaigns, and content planning.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMMUNITY MANAGEMENT HIGHLIGHT -->
+    <section id="community">
+        <div class="cosmic-card" style="display: flex; flex-direction: column; gap: 20px;">
+            <h2>Community Highlights 👥</h2>
+            <p>Community moderation and management are major aspects of my practical experience. I know how to foster active, positive student communities.</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="comm-members-val">900K+</div>
+                    <div class="stat-label">Community Members</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MINI MEDIA KIT / CREATOR SNAPSHOT -->
+    <section id="mediakit">
+        <h2>Creator Snapshot 📊</h2>
+        <p class="section-subtitle">Quick channel statistics and demographic overview.</p>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value" id="stat-followers">YOUR_FOLLOWERS</div>
+                <div class="stat-label">Total Followers</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-views">YOUR_AVERAGE_VIEWS</div>
+                <div class="stat-label">Average Views</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-rate">YOUR_ENGAGEMENT_RATE</div>
+                <div class="stat-label">Engagement Rate</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">Students / Youth</div>
+                <div class="stat-label">Main Demographic</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COLLABORATION SERVICES -->
+    <section id="services">
+        <h2>Collaboration Offerings 💡</h2>
+        <p class="section-subtitle">Flexible integration packages tailored to brand goals.</p>
+
+        <div class="cards-grid">
+            <div class="category-card">
+                <h3>Sponsored Social Posts</h3>
+                <p>Dedicated Instagram Reels, TikTok videos, or YouTube Shorts showcasing your product naturally.</p>
+            </div>
+
+            <div class="category-card">
+                <h3>UGC Video Creation</h3>
+                <p>High-quality user-generated content for brands to utilize on their official social ad channels.</p>
+            </div>
+
+            <div class="category-card">
+                <h3>Product Integration</h3>
+                <p>Organic study tool, app, or stationery integration directly into my daily study routines.</p>
+            </div>
+
+            <div class="category-card">
+                <h3>Story Promotion</h3>
+                <p>Interactive Instagram/Facebook stories with direct links, discount codes, and polls.</p>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 25px; font-weight: 500; color: var(--text-gold);">
+            ✨ Open to discussing custom collaboration concepts!
+        </p>
+    </section>
+
+    <!-- BRAND FIT -->
+    <section id="brand-fit">
+        <h2>Ideal Brand Partners 🏷️</h2>
+        <p class="section-subtitle">Niches that naturally fit my audience and content style.</p>
+
+        <div class="skills-container">
+            <span class="skill-tag">Education & EdTech</span>
+            <span class="skill-tag">Stationery & Books</span>
+            <span class="skill-tag">Study Tools & Apps</span>
+            <span class="skill-tag">Technology & Gadgets</span>
+            <span class="skill-tag">Productivity Tools</span>
+            <span class="skill-tag">Lifestyle & Fashion</span>
+            <span class="skill-tag">Student Services</span>
+            <span class="skill-tag">Creative Products</span>
+        </div>
+    </section>
+
+    <!-- PERSONAL PHOTO SCRAPBOOK GALLERY -->
+    <section id="gallery">
+        <h2>Digital Scrapbook 📸</h2>
+        <p class="section-subtitle">Unfiltered polaroids and everyday snapshots.</p>
+
+        <div class="scrapbook-grid">
+            <div class="polaroid-card">
+                <img src="https://via.placeholder.com/250x250" alt="Scrapbook Photo">
+                <div class="polaroid-caption">Late night study desk ☕</div>
+            </div>
+            <div class="polaroid-card">
+                <img src="https://via.placeholder.com/250x250" alt="Scrapbook Photo">
+                <div class="polaroid-caption">Admission prep days 📚</div>
+            </div>
+            <div class="polaroid-card">
+                <img src="https://via.placeholder.com/250x250" alt="Scrapbook Photo">
+                <div class="polaroid-caption">Fav stationery picks ✏️</div>
+            </div>
+            <div class="polaroid-card">
+                <img src="https://via.placeholder.com/250x250" alt="Scrapbook Photo">
+                <div class="polaroid-caption">Small wins & coffee ☁️</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT / COLLABORATION CTA -->
+    <section id="contact">
+        <div class="contact-card">
+            <h2>Have an idea? Let's make something worth remembering. ✦</h2>
+            <p style="max-width: 540px; margin: 14px auto 30px auto; color: var(--text-muted);">
+                I am currently open for PR packages, brand sponsorships, UGC creation, and creative partnerships.
+            </p>
+            
+            <a href="mailto:YOUR_EMAIL" class="btn btn-primary" id="btn-email">Send Collaboration Email ✉️</a>
+
+            <div style="margin-top: 30px; font-size: 0.95rem; color: var(--text-muted);">
+                <p>Email: <strong id="display-email" style="color:var(--text-light);">YOUR_EMAIL</strong></p>
+                <p>Instagram: <strong id="display-ig" style="color:var(--text-light);">YOUR_INSTAGRAM</strong></p>
+                <p>WhatsApp: <strong id="display-wa" style="color:var(--text-light);">YOUR_WHATSAPP</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>✦ Study. Create. Document. Repeat. ☾</p>
+        <p style="margin-top: 8px;">© <span id="year"></span> <span id="footer-name">CREATOR_NAME</span>. All Rights Reserved.</p>
+    </footer>
+
+    <!-- LIGHTBOX MODAL -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Preview Lightbox Image">
+    </div>
+
+    <!-- ==================== EASY CUSTOMIZATION SCRIPT ==================== -->
+    <script>
+        /* =================================================================
+           ==================== EASY CUSTOMIZATION CONFIG ==================
+           Simply replace the values in quotes below with your info!
+           ================================================================= */
+        const CONFIG = {
+            // Identity
+            name: "Your Name",
+            title: "Study & Lifestyle Content Creator / Storyteller",
+            bio: "Documenting realistic study life, university admission journeys, relatable student struggles, and authentic everyday experiences.",
+            
+            // Social Links & Handles
+            instagram_handle: "@YOUR_INSTAGRAM_HANDLE",
+            instagram_url: "https://instagram.com/YOUR_INSTAGRAM_HANDLE",
+            
+            youtube_handle: "YOUR_YOUTUBE_CHANNEL",
+            youtube_url: "https://youtube.com/YOUR_YOUTUBE_CHANNEL",
+            
+            facebook_handle: "YOUR_FACEBOOK_PAGE",
+            facebook_url: "https://facebook.com/YOUR_FACEBOOK_PAGE",
+            
+            tiktok_handle: "@YOUR_TIKTOK_HANDLE",
+            tiktok_url: "https://tiktok.com/@YOUR_TIKTOK_HANDLE",
+
+            // Contact Information
+            email: "your.email@example.com",
+            whatsapp: "+1234567890",
+
+            // "Currently" Live Card
+            currently_studying: "University Admission Prep",
+            currently_reading: "Atomic Habits",
+            currently_creating: "Realistic Study Routine Vlogs",
+
+            // Media Kit Stats
+            followers: "YOUR_FOLLOWERS",
+            average_views: "YOUR_AVERAGE_VIEWS",
+            engagement_rate: "YOUR_ENGAGEMENT_RATE",
+            community_members: "900K+"
+        };
+
+        /* ==================== AUTOMATIC INITIALIZATION ==================== */
+        document.addEventListener("DOMContentLoaded", () => {
+            // Text Elements
+            document.getElementById("nav-name").innerText = CONFIG.name.toUpperCase() + " UNIVERSE";
+            document.getElementById("footer-name").innerText = CONFIG.name;
+            document.getElementById("hero-bio").innerText = CONFIG.bio;
+            
+            // Currently Items
+            document.getElementById("curr-study").innerText = CONFIG.currently_studying;
+            document.getElementById("curr-read").innerText = CONFIG.currently_reading;
+            document.getElementById("curr-create").innerText = CONFIG.currently_creating;
+
+            // Social Elements
+            document.getElementById("ig-handle-txt").innerText = CONFIG.instagram_handle;
+            document.getElementById("ig-link-btn").href = CONFIG.instagram_url;
+
+            document.getElementById("yt-handle-txt").innerText = CONFIG.youtube_handle;
+            document.getElementById("yt-link-btn").href = CONFIG.youtube_url;
+
+            document.getElementById("fb-handle-txt").innerText = CONFIG.facebook_handle;
+            document.getElementById("fb-link-btn").href = CONFIG.facebook_url;
+
+            document.getElementById("tt-handle-txt").innerText = CONFIG.tiktok_handle;
+            document.getElementById("tt-link-btn").href = CONFIG.tiktok_url;
+
+            // Stats
+            document.getElementById("stat-followers").innerText = CONFIG.followers;
+            document.getElementById("stat-views").innerText = CONFIG.average_views;
+            document.getElementById("stat-rate").innerText = CONFIG.engagement_rate;
+            document.getElementById("comm-members-val").innerText = CONFIG.community_members;
+
+            // Contact
+            document.getElementById("btn-email").href = "mailto:" + CONFIG.email;
+            document.getElementById("display-email").innerText = CONFIG.email;
+            document.getElementById("display-ig").innerText = CONFIG.instagram_handle;
+            document.getElementById("display-wa").innerText = CONFIG.whatsapp;
+
+            // Social Icon Bar
+            document.getElementById("link-instagram").href = CONFIG.instagram_url;
+            document.getElementById("link-youtube").href = CONFIG.youtube_url;
+            document.getElementById("link-facebook").href = CONFIG.facebook_url;
+            document.getElementById("link-tiktok").href = CONFIG.tiktok_url;
+
+            document.getElementById("year").innerText = new Date().getFullYear();
+
+            // Init Starfield
+            initStarfield();
+        });
+
+        /* Dynamic Starfield Canvas Generator */
+        function initStarfield() {
+            const canvas = document.getElementById("starfield");
+            const ctx = canvas.getContext("2d");
+            let stars = [];
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                stars = [];
+                for(let i = 0; i < 140; i++) {
+                    stars.push({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height,
+                        radius: Math.random() * 1.5,
+                        alpha: Math.random(),
+                        speed: Math.random() * 0.02 + 0.005
+                    });
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                stars.forEach(star => {
+                    star.alpha += star.speed;
+                    if (star.alpha > 1 || star.alpha < 0) star.speed = -star.speed;
+                    ctx.fillStyle = `rgba(254, 240, 138, ${Math.abs(star.alpha)})`;
+                    ctx.beginPath();
+                    ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+                requestAnimationFrame(animate);
+            }
+
+            window.addEventListener("resize", resize);
+            resize();
+            animate();
+        }
+
+        /* Nav Toggle */
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+        menuToggle.addEventListener("click", () => navLinks.classList.toggle("active"));
+
+        /* Lightbox */
+        function openLightbox(src) {
+            document.getElementById("lightbox-img").src = src;
+            document.getElementById("lightbox").style.display = "flex";
+        }
+        function closeLightbox() {
+            document.getElementById("lightbox").style.display = "none";
+        }
+    </script>
+</body>
+</html>
